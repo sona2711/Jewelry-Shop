@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup, Validators,FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProductListService } from '../../services/product-list.service'
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { ProductListService } from '../../services/product-list.service'
 export class ContactUsComponent implements OnInit {
   constructor( 
     private httpClient: HttpClient,
-    private productListService :ProductListService
+    private productListService :ProductListService,
+    private router: Router
   ){
     window.scroll(0,0)
   }
@@ -35,6 +37,7 @@ export class ContactUsComponent implements OnInit {
     else{
     let data = this.contactInfo.value
     //this.httpClient.post(this.productListService.address,data)
+    this.router.navigateByUrl("/home")
     this.contactInfo.reset()
   }
 }
